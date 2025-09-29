@@ -63,7 +63,27 @@ public:
     {
         if (__serial) {
             __serial->end();
+            Serial.println("RS485 Serial ended");
         }
+
+        // Set RE/DE pin to low power state (receive mode, low power)
+        if (__reDePin != -1)
+        {
+            digitalWrite(__reDePin, LOW);
+            pinMode(__reDePin, INPUT); // Set to input to reduce current draw
+        }
+
+        // Set TX/RX pins to input to reduce power consumption
+        if (__txPin != -1)
+        {
+            pinMode(__txPin, INPUT);
+        }
+        if (__rxPin != -1)
+        {
+            pinMode(__rxPin, INPUT);
+        }
+
+        Serial.println("RS485 pins set to low power mode");
     }
 
     // Read all sensor data at once

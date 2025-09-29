@@ -103,6 +103,8 @@ void loopPMU(void (*pressed_cb)(void));
 
 void scanWiFi();
 
+void printWakeupReason();
+
 #ifdef HAS_PMU
 extern XPowersLibInterface *PMU;
 extern bool pmuInterrupt;
