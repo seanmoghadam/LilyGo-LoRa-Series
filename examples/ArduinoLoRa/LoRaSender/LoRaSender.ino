@@ -9,7 +9,7 @@
 #include <esp_bt.h>
 
 #ifndef CONFIG_RADIO_FREQ
-#define CONFIG_RADIO_FREQ 868.0
+#define CONFIG_RADIO_FREQ 868.1
 #endif
 #ifndef CONFIG_RADIO_OUTPUT_POWER
 #define CONFIG_RADIO_OUTPUT_POWER 17
@@ -82,11 +82,11 @@ void setup()
     LoRa.setTxPower(CONFIG_RADIO_OUTPUT_POWER);
     LoRa.setSignalBandwidth(CONFIG_RADIO_BW * 1000);
     LoRa.setSpreadingFactor(10);
-    LoRa.setPreambleLength(16);
-    LoRa.setSyncWord(0xAB);
-    LoRa.disableCrc();
+    LoRa.setPreambleLength(8);
+    LoRa.setSyncWord(0x34);
+    LoRa.enableCrc();
     LoRa.disableInvertIQ();
-    LoRa.setCodingRate4(7);
+    LoRa.setCodingRate4(5);
 
     // Initialize soil sensor
     Serial.println("Initializing RS485 Soil Sensor...");
